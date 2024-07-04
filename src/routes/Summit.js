@@ -19,7 +19,7 @@ export const Summit = () => {
   const switchView = () => setView(view === "pending" ? "create" : "pending");
 
   useEffect(() => {
-    if (summitStatus.affiliation) setView("main");
+    //if (summitStatus.affiliation) setView("main");
     if (summitStatus.invitation) setIsInvited(true);
   }, [summitStatus]);
 

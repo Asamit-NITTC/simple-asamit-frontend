@@ -9,6 +9,7 @@ import SendMessages from "@line/liff/send-messages";
 import CloseWindow from "@line/liff/close-window";
 import IsInClient from "@line/liff/is-in-client";
 import OpenWindow from "@line/liff/open-window";
+import ScanCodeV2 from "@line/liff/scan-code-v2";
 liff.use(new IsLoggedIn());
 liff.use(new Login());
 liff.use(new Logout());
@@ -18,6 +19,7 @@ liff.use(new SendMessages());
 liff.use(new CloseWindow());
 liff.use(new IsInClient());
 liff.use(new OpenWindow());
+liff.use(new ScanCodeV2());
 
 export const useLiff = () => {
   const [liffObject, setLiffObject] = useState({});

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { ScanModal } from "./ScanModal";
 import { Button } from "../ui/Button";
 import { Block } from "../ui/Block";
 import { useAxios } from "../hooks/useAxios";
@@ -9,6 +10,8 @@ import styles from "./SummitCreate.module.css";
 const DEBUG = process.env.DEBUG === "TRUE" ? true : false;
 
 export const SummitCreate = ({ setPending }) => {
+  const [isScanning, setIsScanning] = useState(false);
+
   const [{ isLoading }, doFetch] = useAxios();
   const [formData, setFormData] = useState({});
   const { liffObject } = useContext(LiffObjectContext);
@@ -29,6 +32,10 @@ export const SummitCreate = ({ setPending }) => {
       mission: "",
       description: formDescription,
     });
+  };
+
+  const handleScan = () => {
+    setIsScanning(true);
   };
 
   const createGroup = async () => {
@@ -56,6 +63,7 @@ export const SummitCreate = ({ setPending }) => {
 
   return (
     <>
+      <ScanModal isOn={isScanning} />
       <Block>
         <div className={styles.content}>
           <h2>グループを作成</h2>
@@ -70,6 +78,11 @@ export const SummitCreate = ({ setPending }) => {
                   value={formUid}
                 />
               </div>
+              {
+                <Button type="summit" visual="secondary" onClick={handleScan}>
+                  QRコードから追加
+                </Button>
+              }
               <div>
                 <p>グループの起床時刻</p>
                 <input
