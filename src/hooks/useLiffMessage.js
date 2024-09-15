@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export const useLiffMessage = (liffObject, isLoggedIn) => {
   const sendMessages = async (message) => {
     if (!isLoggedIn) return;
@@ -8,6 +10,8 @@ export const useLiffMessage = (liffObject, isLoggedIn) => {
       },
     ]);
   };
+
+  useEffect(() => {}, [liffObject]);
 
   return {
     sendMessages,
