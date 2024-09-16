@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--
     <link rel="icon" sizes="16x16" href="/favicon.ico" />
-    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     -->
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
     <title>Asamit!</title>
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+       // Use the window load event to keep the page load performant
+       window.addEventListener('load', () => {
+         navigator.serviceWorker.register('/sw.js');
+       });
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

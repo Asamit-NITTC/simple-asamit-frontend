@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -45,5 +46,8 @@ module.exports = {
             template: path.join(__dirname, 'public', 'index.html'),
             favicon: path.join(__dirname, 'public', 'favicon.ico'),
         }),
+        new GenerateSW({
+          swDest: './dist/sw.js'
+        })
     ],
 };
